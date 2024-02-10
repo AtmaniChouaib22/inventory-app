@@ -10,9 +10,9 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
-app.use("/api/genres", router);
+app.use("/api", router);
 
-app.get("/", (req, res) => {
+app.use("/", (req, res) => {
   res.send("hello world");
 });
 mongoose

@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
 
-const { Schema } = mongoose.Schema;
+const { Schema } = mongoose;
 
 const gameSchema = new Schema({
   title: { type: String, required: true, minLength: 3, maxLength: 25 },
-  genre: { type: mongoose.Types.ObjectId, ref: "genres" },
+  genreName: { type: mongoose.Types.ObjectId, ref: "genres", required: true },
   description: { type: String, required: true, maxLength: 100 },
-  developper: { type: mongoose.Types.ObjectId, ref: "develeppers" },
+  developper: {
+    type: mongoose.Types.ObjectId,
+    ref: "developpers",
+    required: true,
+  },
 });
 
 gameSchema.virtual("url").get(function () {

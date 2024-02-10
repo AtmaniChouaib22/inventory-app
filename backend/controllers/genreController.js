@@ -1,27 +1,35 @@
-const genre = require("../models/genreSchema");
-const mongoose = require("mongoose");
+const genres = require("../models/genreSchema");
 const asyncHandler = require("express-async-handler");
-
-//all genres
-exports.genre_list = asyncHandler(async (req, res, next) => {
-  const allGenres = await genre.find({}).exec();
-  res.status(200).json(allGenres);
+const mongoose = require("mongoose");
+//genres list
+const genre_list = asyncHandler(async (req, res, next) => {
+  const allgenres = await genres.find({}).sort({ createdAt: -1 });
+  res.status(200).json(allgenres);
 });
-
-//one genre
-exports.genre_one = asyncHandler(async (req, res, next) => {
+//one genre 
+const genre_one = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ msg: "no such genre" });
-  }
-  const book = await genre.findById(id);
-  if (!book) {
-    return res.status(404).json({ msg: "no such genre" });
-  }
-  res.status(200).json(book);
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).json({ err: "no genre found" });
+  const genre = await genres.findById(id);
+  if (!genre) return res.status(404).json({ err: "no genre found" });
+  res.status(400).json(genre);
+});
+//genre post 
+const genre_post = asyncHandler(async (req, res, next) => {
+  const { genreName } = req.body;
+  if (!genreName) return res.status(404).json({ err: "no genre found" });
+  const newGenre = await genres.create({ genreName });
+  res.status(400).json(newGenre);
+});
+//genre delete 
+const genre_delete = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).json({ err: "no genre found" });
+  const genre = await genres.findByIdAndDelete(id)
+  if (!genre) return res.status(404).json({ err: "no genre found" });
+  res.status(400).json(genre);
 });
 
-//post genre
-exports.genre_create = asyncHandler(async (req, res, next) => {});
-//delete genre
-exports.genre_delete = asyncHandler(async (req, res, next) => {});
+module.exports = { genre_delete, genre_list, genre_one, genre_post };
