@@ -4,13 +4,22 @@ const Links = () => {
   return (
     <>
       <div>
-        <Link to="/">Home</Link>
+        <Link to="/api/games">Games</Link>
       </div>
       <div>
-        <Link to="/">Home</Link>
+        <Link to="/api/genres">Genres</Link>
       </div>
       <div>
-        <Link to="/">Home</Link>
+        <Link to="/api/developpers">Developpers</Link>
+      </div>
+      <div>
+        <Link to="/api/games/add">add game</Link>
+      </div>
+      <div>
+        <Link to="/api/developpers/add">add developper</Link>
+      </div>
+      <div>
+        <Link to="/api/genres/add">add genre</Link>
       </div>
     </>
   );
