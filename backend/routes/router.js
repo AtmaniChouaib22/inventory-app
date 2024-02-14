@@ -18,7 +18,20 @@ const {
   dev_list,
 } = require("../controllers/developpersController");
 
+const multer = require("multer");
+const path = require("path");
+
 const router = express.Router();
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "../app/public");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+const upload = multer({ storage: storage });
 
 // genres routes
 
@@ -36,7 +49,7 @@ router.get("/games", games_list);
 
 router.get("/games/:id", game_one);
 
-router.post("/games", game_post);
+router.post("/games", upload.single("picture"), game_post);
 
 router.delete("/games/:id", game_delete);
 

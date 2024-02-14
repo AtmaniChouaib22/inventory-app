@@ -11,6 +11,7 @@ const gameSchema = new Schema({
     ref: "developpers",
     required: true,
   },
+  picture: { type: String },
 });
 
 gameSchema.virtual("url").get(function () {
