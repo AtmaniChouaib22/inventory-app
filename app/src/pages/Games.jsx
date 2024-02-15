@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Game from "../components/game";
 
 const Games = () => {
   const [games, setGames] = useState([]);
@@ -11,12 +12,19 @@ const Games = () => {
       }
     };
     fetchGames();
-  });
+  }, []);
   return (
-    <div>
-      {games.map((game) => (
-        <div key={game._id}>{game.title}</div>
-      ))}
+    <div className="flex flex-col items-center">
+      <div>all games</div>
+      <div className="sm:flex sm:flex-shrink-0 sm:gap-5 sm:items-center px-10">
+        {games.map((game) => (
+          <Game
+            key={game._id}
+            title={game.title}
+            image={`../uploads/${game.picture}`}
+          />
+        ))}
+      </div>
     </div>
   );
 };
