@@ -35,21 +35,33 @@ const DevForm = () => {
     }
   };
   return (
-    <div>
+    <div className="pt-10 flex justify-center items-center">
       {error && <div>adding failed {error}</div>}
-      <form onSubmit={handleSubmit} method="post">
-        <div>Add a Developper</div>
-        <div>
-          <label htmlFor="name">developper</label>
+      <form
+        onSubmit={handleSubmit}
+        method="post"
+        className="flex flex-col bg-indigo-200 items-center sm:gap-10 gap-5 justify-center sm:py-14 sm:px-24 py-8 px-5 rounded-xl"
+      >
+        <div className="text-3xl text-center font-bold">Add a Developer</div>
+        <div className="flex sm:flex-row gap-5 items-center flex-col">
+          <label htmlFor="name" className="text-xl font-semibold">
+            Developer
+          </label>
           <input
             type="text"
             id="name"
             name="name"
             onChange={handleChange}
             required
+            className="py-1 w-full rounded-lg px-2 outline-0"
           />
         </div>
-        <button type="submit">Add</button>
+        <button
+          type="submit"
+          className="px-8 py-3 bg-indigo-600 rounded-lg font-semibold text-lg text-white hover:scale-105 hover:bg-white hover:border-2 hover:border-blue-500 hover:text-blue-500 transition duration-150 ease-out hover:ease-in"
+        >
+          Add
+        </button>
       </form>
     </div>
   );

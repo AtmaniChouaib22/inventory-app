@@ -34,21 +34,33 @@ const GenreForm = () => {
     }
   };
   return (
-    <div>
+    <div className="pt-10 flex justify-center items-center ">
       {error && <div>adding failed {error}</div>}
-      <form method="post" onSubmit={handleSubmit}>
-        <div>Add Genre</div>
-        <div>
-          <label htmlFor="genreName">Genre</label>
+      <form
+        method="post"
+        onSubmit={handleSubmit}
+        className="flex flex-col bg-indigo-200 items-center sm:gap-10 gap-5 justify-center sm:py-14 sm:px-24 py-8 px-5 rounded-xl"
+      >
+        <div className="text-3xl text-center font-bold">Add Genre</div>
+        <div className="flex sm:flex-row gap-5 items-center flex-col">
+          <label htmlFor="genreName" className="text-xl font-semibold">
+            Genre
+          </label>
           <input
             type="text"
             id="genreName"
             name="genreName"
             onChange={handleChange}
             required
+            className="w-ful py-1 rounded-lg px-2"
           />
         </div>
-        <button type="submit">Add</button>
+        <button
+          type="submit"
+          className="px-8 py-3 bg-indigo-600 rounded-lg font-semibold text-lg text-white hover:scale-105 hover:bg-white hover:border-2 hover:border-blue-500 hover:text-blue-500 transition duration-150 ease-out hover:ease-in"
+        >
+          Add
+        </button>
       </form>
     </div>
   );

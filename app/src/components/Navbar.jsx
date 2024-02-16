@@ -25,7 +25,7 @@ const Links = () => {
             add
           </button>
           {dropDown && (
-            <div className="absolute bg-slate-400 z-50 w-full top-9">
+            <div className="absolute bg-slate-400 z-50 w-full top-10 text-wrap">
               <ul className="flex flex-col justify-center items-start px-3 flex-nowrap text-nowrap gap-3 py-3">
                 <Link to="/api/games/addgame">add game</Link>
                 <Link to="/api/genres/addgenre">add genre</Link>
@@ -51,7 +51,7 @@ const NavMob = () => {
       <Link to="/api/genres" className="w-full border-b-2">
         Genres
       </Link>
-      <Link to="/api/genres" className="w-full border-b-2">
+      <Link to="/api/genres/addgenre" className="w-full border-b-2">
         Add Genre
       </Link>
       <Link to="/api/games/addgame" className="w-full border-b-2">
@@ -59,9 +59,6 @@ const NavMob = () => {
       </Link>
       <Link to="/api/developers/adddev" className="w-full border-b-2">
         Add developer
-      </Link>
-      <Link to="/api/genres/addgenre" className="w-full border-b-2">
-        Add genres
       </Link>
     </ul>
   );
@@ -71,7 +68,7 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
   return (
     <>
-      <nav className="sm:flex w-full shadow-lg flex-col py-3">
+      <nav className="sm:flex w-full shadow-lg flex-col py-3 bg-indigo-700 text-lg text-white font-semibold">
         <div className="flex">
           <div className="pl-5 w-full">Games Inventory</div>
           <div className="">
