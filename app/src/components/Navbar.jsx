@@ -16,8 +16,8 @@ const Links = () => {
           Genres
         </Link>
 
-        <Link to="/api/developpers" className="w-full">
-          Developpers
+        <Link to="/api/developers" className="w-full">
+          Developers
         </Link>
 
         <div className="relative">
@@ -28,8 +28,8 @@ const Links = () => {
             <div className="absolute bg-slate-400 z-50 w-full top-9">
               <ul className="flex flex-col justify-center items-start px-3 flex-nowrap text-nowrap gap-3 py-3">
                 <Link to="/api/games/addgame">add game</Link>
-                <Link to="/api/games/addgenre">add genre</Link>
-                <Link to="/api/games/adddevelopper">add developper</Link>
+                <Link to="/api/genres/addgenre">add genre</Link>
+                <Link to="/api/developers/adddev">add developer</Link>
               </ul>
             </div>
           )}
@@ -45,20 +45,23 @@ const NavMob = () => {
       <Link to="/api/games" className="w-full border-b-2">
         Games
       </Link>
-      <Link to="/api/games" className="w-full border-b-2">
-        developpers
+      <Link to="/api/developers" className="w-full border-b-2">
+        Developers
       </Link>
-      <Link to="/api/games" className="w-full border-b-2">
-        genres
+      <Link to="/api/genres" className="w-full border-b-2">
+        Genres
       </Link>
-      <Link to="/api/games" className="w-full border-b-2">
-        add developper
+      <Link to="/api/genres" className="w-full border-b-2">
+        Add Genre
       </Link>
-      <Link to="/api/games" className="w-full border-b-2">
-        add genre
+      <Link to="/api/games/addgame" className="w-full border-b-2">
+        Add Game
       </Link>
-      <Link to="/api/games" className="w-full border-b-2">
-        add game
+      <Link to="/api/developers/adddev" className="w-full border-b-2">
+        Add developer
+      </Link>
+      <Link to="/api/genres/addgenre" className="w-full border-b-2">
+        Add genres
       </Link>
     </ul>
   );
