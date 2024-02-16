@@ -16,7 +16,7 @@ const {
   dev_delete,
   dev_one,
   dev_list,
-} = require("../controllers/developpersController");
+} = require("../controllers/developersController");
 
 const multer = require("multer");
 const path = require("path");
@@ -25,7 +25,7 @@ const router = express.Router();
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "../app/public");
+    cb(null, "../app/uploads");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -55,12 +55,12 @@ router.delete("/games/:id", game_delete);
 
 // dev routes
 
-router.get("/developpers", dev_list);
+router.get("/developers", dev_list);
 
-router.get("/developpers/:id", dev_one);
+router.get("/developers/:id", dev_one);
 
-router.post("/developpers", dev_post);
+router.post("/developers", dev_post);
 
-router.delete("/developpers/:id", dev_delete);
+router.delete("/developers/:id", dev_delete);
 
 module.exports = router;
