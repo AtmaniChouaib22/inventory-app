@@ -3,6 +3,11 @@ const games = require("../models/gameSchema");
 const asyncHandler = require("express-async-handler");
 const mongoose = require("mongoose");
 
+const genreList = asyncHandler(async (req, res, next) => {
+  const gen = await genres.find({}).sort({ name: 1 });
+  res.status(200).json(gen);
+});
+
 const genre_list = asyncHandler(async (req, res, next) => {
   const genresWithCount = await games.aggregate([
     {
@@ -63,4 +68,4 @@ const genre_delete = asyncHandler(async (req, res, next) => {
   res.status(200).json(genre);
 });
 
-module.exports = { genre_delete, genre_list, genre_one, genre_post };
+module.exports = { genre_delete, genre_list, genre_one, genre_post, genreList };

@@ -4,9 +4,9 @@ const { Schema } = mongoose;
 
 const gameSchema = new Schema(
   {
-    title: { type: String, required: true, minLength: 3, maxLength: 25 },
+    title: { type: String, required: true, minLength: 3, maxLength: 50 },
     genre: { type: mongoose.Types.ObjectId, ref: "genres", required: true },
-    description: { type: String, required: true, maxLength: 100 },
+    description: { type: String, required: true, maxLength: 300 },
     developer: {
       type: mongoose.Types.ObjectId,
       ref: "developers",

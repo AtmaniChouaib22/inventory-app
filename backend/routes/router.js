@@ -4,6 +4,7 @@ const {
   genre_delete,
   genre_post,
   genre_one,
+  genreList,
 } = require("../controllers/genreController");
 const {
   games_list,
@@ -16,6 +17,7 @@ const {
   dev_delete,
   dev_one,
   dev_list,
+  devList,
 } = require("../controllers/developersController");
 
 const multer = require("multer");
@@ -34,6 +36,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // genres routes
+router.get("/genres/all", genreList);
 
 router.get("/genres", genre_list);
 
@@ -54,6 +57,8 @@ router.post("/games", upload.single("picture"), game_post);
 router.delete("/games/:id", game_delete);
 
 // dev routes
+
+router.get("/developers/all", devList);
 
 router.get("/developers", dev_list);
 
