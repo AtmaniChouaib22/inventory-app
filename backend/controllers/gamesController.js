@@ -7,7 +7,7 @@ const multer = require("multer");
 const games_list = asyncHandler(async (req, res, next) => {
   const allgames = await games
     .find({})
-    .populate("genreName")
+    .populate("genre")
     .populate("developer")
     .exec();
   res.status(200).json(allgames);
@@ -27,12 +27,12 @@ const game_one = asyncHandler(async (req, res, next) => {
 const game_post = asyncHandler(async (req, res, next) => {
   console.log(req.file.filename);
   const picture = req.file.filename;
-  const { title, description, developer, genreName } = req.body;
+  const { title, description, developer, genre } = req.body;
   const newGame = {
     title,
     description,
     developer,
-    genreName,
+    genre,
     picture,
   };
   if (!newGame) return res.status(404).json({ err: "no game found" });

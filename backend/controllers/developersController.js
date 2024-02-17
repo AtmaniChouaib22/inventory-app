@@ -1,11 +1,35 @@
 const developers = require("../models/developerSchema");
+const games = require("../models/gameSchema");
 const asyncHandler = require("express-async-handler");
 const mongoose = require("mongoose");
 
 // dev list
 const dev_list = asyncHandler(async (req, res, next) => {
-  const alldevs = await developers.find({}).sort({ createdAt: -1 });
-  res.status(200).json(alldevs);
+  const devsWithCount = await games.aggregate([
+    {
+      $group: {
+        _id: "$developer",
+        gameCount: { $sum: 1 },
+      },
+    },
+    {
+      $lookup: {
+        from: "developers",
+        localField: "_id",
+        foreignField: "_id",
+        as: "developer",
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        developerId: "$_id",
+        developerName: { $arrayElemAt: ["$developer.name", 0] },
+        gameCount: 1,
+      },
+    },
+  ]);
+  res.status(200).json(devsWithCount);
 });
 
 //one dev

@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const gameSchema = new Schema(
   {
     title: { type: String, required: true, minLength: 3, maxLength: 25 },
-    genreName: { type: mongoose.Types.ObjectId, ref: "genres", required: true },
+    genre: { type: mongoose.Types.ObjectId, ref: "genres", required: true },
     description: { type: String, required: true, maxLength: 100 },
     developer: {
       type: mongoose.Types.ObjectId,

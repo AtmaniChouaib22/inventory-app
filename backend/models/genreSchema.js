@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const genreSchema = new Schema({
-  genreName: {
+  name: {
     type: String,
     required: true,
     minLength: 3,

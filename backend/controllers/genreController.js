@@ -1,8 +1,38 @@
 const genres = require("../models/genreSchema");
+const games = require("../models/gameSchema");
 const asyncHandler = require("express-async-handler");
 const mongoose = require("mongoose");
-//genres list
+
 const genre_list = asyncHandler(async (req, res, next) => {
+  const genresWithCount = await games.aggregate([
+    {
+      $group: {
+        _id: "$genre",
+        gameCount: { $sum: 1 },
+      },
+    },
+    {
+      $lookup: {
+        from: "genres",
+        localField: "_id",
+        foreignField: "_id",
+        as: "genre",
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        genreId: "$_id",
+        genreName: { $arrayElemAt: ["$genre.name", 0] },
+        gameCount: 1,
+      },
+    },
+  ]);
+  res.status(200).json(genresWithCount);
+});
+
+//genres list
+const genre_liste = asyncHandler(async (req, res, next) => {
   const allgenres = await genres.find({}).sort({ createdAt: -1 });
   res.status(200).json(allgenres);
 });
@@ -17,10 +47,10 @@ const genre_one = asyncHandler(async (req, res, next) => {
 });
 //genre post
 const genre_post = asyncHandler(async (req, res, next) => {
-  const { genreName } = req.body;
-  if (!genreName)
+  const { name } = req.body;
+  if (!name)
     return res.status(404).json({ err: "please specify a correct value" });
-  const newGenre = await genres.create({ genreName });
+  const newGenre = await genres.create({ name });
   res.status(201).json(newGenre);
 });
 //genre delete
