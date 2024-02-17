@@ -16,7 +16,7 @@ const Genres = () => {
       <h1 className="text-3xl font-bold text-indigo-600">All Genres List </h1>
       <ul className="flex flex-col gap-3 items-start">
         {genres.map((genre) => (
-          <li key={genre.genreId} className="font-semibold">
+          <li key={genre.genreId} className="text-lg font-semibold">
             <span className="text-lg font-bold">{genre.genreName}</span>:{" "}
             {genre.gameCount} Games
           </li>

@@ -1,12 +1,12 @@
 import { useState } from "react";
 const GenreForm = () => {
-  const [genreName, setgenreName] = useState("");
+  const [name, setName] = useState("");
   const [error, setError] = useState();
 
-  const genre = { genreName };
+  const genre = { name };
 
   const handleChange = (event) => {
-    setgenreName(event.target.value);
+    setName(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -23,7 +23,7 @@ const GenreForm = () => {
       const json = await response.json();
 
       if (response.ok) {
-        setgenreName("");
+        setName("");
         setError(null);
       }
       if (!response.ok) {
