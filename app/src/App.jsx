@@ -7,6 +7,7 @@ import GenreForm from "./pages/GenreForm";
 import Genres from "./pages/Genres";
 import DevForm from "./pages/DevForm";
 import Developers from "./pages/Developers";
+import FullGame from "./components/FullGame";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/api/games/addgame" element={<GameForm />} />
         <Route path="/api/genres/addgenre" element={<GenreForm />} />
         <Route path="/api/developers/adddev" element={<DevForm />} />
+        <Route path="/api/games/:id" Component={FullGame} />
       </Routes>
     </BrowserRouter>
   );

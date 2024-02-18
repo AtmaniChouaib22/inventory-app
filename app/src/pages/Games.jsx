@@ -22,6 +22,7 @@ const Games = () => {
             key={game._id}
             title={game.title}
             image={`../uploads/${game.picture}`}
+            url={game.url}
           />
         ))}
       </div>

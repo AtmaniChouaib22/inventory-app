@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-const Game = ({ title, image }) => {
+const Game = ({ title, image, url }) => {
   return (
     <div className="w-52 ">
-      <Link>
+      <Link to={url}>
         <div className="bg-white px-4 py-2 rounded-sm h-40">
           <div className="flex justify-center items-center ">
             <img src={image} alt="img" className="h-28 w-full" />
