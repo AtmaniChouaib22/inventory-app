@@ -20,5 +20,6 @@ const gameSchema = new Schema(
 gameSchema.virtual("url").get(function () {
   return `/api/games/${this._id}`;
 });
+gameSchema.set("toJSON", { virtuals: true });
 
 module.exports = mongoose.model("games", gameSchema);

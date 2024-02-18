@@ -15,10 +15,15 @@ const games_list = asyncHandler(async (req, res, next) => {
 
 //one game
 const game_one = asyncHandler(async (req, res, next) => {
+  console.log("id", req.params.id);
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).json({ err: "no game found" });
-  const game = await games.findById(id);
+  const game = await games
+    .findById(id)
+    .populate("genre")
+    .populate("developer")
+    .exec();
   if (!game) return res.status(404).json({ err: "no game found" });
   res.status(200).json(game);
 });
