@@ -8,6 +8,7 @@ import Genres from "./pages/Genres";
 import DevForm from "./pages/DevForm";
 import Developers from "./pages/Developers";
 import FullGame from "./components/FullGame";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/api/developers/adddev" element={<DevForm />} />
         <Route path="/api/games/:id" Component={FullGame} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

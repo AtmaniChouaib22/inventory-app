@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 const FullGame = () => {
   const [game, setGame] = useState();
+  const [deleted, setDeleted] = useState(false);
   const [rendered, setRendered] = useState(false);
   const arr = window.location.pathname.split("/");
   const id = arr[3];
@@ -16,8 +19,28 @@ const FullGame = () => {
     };
     fetchGame();
   }, [id]);
+
+  const handleDelete = async () => {
+    try {
+      axios.delete(`http://localhost:3000/api/games/${id}`).then((response) => {
+        console.log(response.data);
+        console.log("deleted");
+        setDeleted(true);
+        setRendered(false);
+      });
+    } catch (error) {
+      console.log("cant find item");
+    }
+  };
+
   return (
     <div className=" pt-10">
+      {deleted && (
+        <div className=" flex justify-center items-center gap-5">
+          <div className="text-2xl font-bold">Game Deleted</div>
+          <Link to="/api/games" className="text-lg font-bold" />
+        </div>
+      )}
       {rendered && (
         <div className="flex justify-center items-center gap-10 bg-indigo-200 py-5">
           <div className="flex flex-col gap-2 w-80 ">
@@ -38,6 +61,12 @@ const FullGame = () => {
               <span className="text-lg font-semibold">Description</span>
               <span>{game.description}</span>
             </div>
+            <button
+              onClick={handleDelete}
+              className="py-3 w-40 bg-red-600 rounded-lg font-semibold text-lg text-white hover:scale-105 hover:bg-white hover:border-2 hover:border-red-500 hover:text-red-500 transition duration-150 ease-out hover:ease-in"
+            >
+              Delete
+            </button>
           </div>
           <div>
             <img

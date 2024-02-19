@@ -16,16 +16,24 @@ const GameForm = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/games",
-        formData,
-        {
+      const response = await axios
+        .post("http://localhost:3000/api/games", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-        }
-      );
-      console.log(response);
+        })
+        .then((response) => {
+          console.log("resp", response.status);
+          if (response.status === 201) {
+            setFormData({
+              title: "",
+              description: "",
+              genre: "",
+              developer: "",
+              picture: {},
+            });
+          }
+        });
     } catch (error) {
       console.error("Error adding developer:", error.message);
     }
@@ -104,9 +112,9 @@ const GameForm = () => {
         </div>
 
         <div className="flex gap-2 flex-wrap ">
-          <div>Genre</div>
+          <div className="text-lg font-semibold">Genre</div>
           {genres.map((genre) => (
-            <div key={genre._id}>
+            <div key={genre._id} className="flex items-center">
               <input
                 type="radio"
                 name="genre"
@@ -121,9 +129,9 @@ const GameForm = () => {
         </div>
 
         <div className="flex gap-2 flex-wrap">
-          <div>Developer</div>
+          <div className="text-lg font-semibold">Developer</div>
           {devs.map((dev) => (
-            <div key={dev._id}>
+            <div key={dev._id} className="flex items-center">
               <input
                 type="radio"
                 name="developer"
@@ -136,7 +144,12 @@ const GameForm = () => {
             </div>
           ))}
         </div>
-        <button type="submit">Add</button>
+        <button
+          type="submit"
+          className="px-8 py-3 bg-indigo-600 rounded-lg font-semibold text-lg text-white hover:scale-105 hover:bg-white hover:border-2 hover:border-blue-500 hover:text-blue-500 transition duration-150 ease-out hover:ease-in"
+        >
+          Add
+        </button>
       </form>
     </div>
   );

@@ -21,15 +21,24 @@ const Links = () => {
         </Link>
 
         <div className="relative">
-          <button className="relative w-32 " onClick={() => setDrop(!dropDown)}>
-            add
+          <button
+            className="relative w-32 bg-indigo-600 rounded-lg font-semibold text-lg text-white hover:scale-105 hover:bg-white  hover:border-blue-500 hover:text-blue-500 transition duration-150 ease-out hover:ease-in"
+            onClick={() => setDrop(!dropDown)}
+          >
+            Add
           </button>
           {dropDown && (
-            <div className="absolute bg-slate-400 z-50 w-full top-10 text-wrap">
-              <ul className="flex flex-col justify-center items-start px-3 flex-nowrap text-nowrap gap-3 py-3">
-                <Link to="/api/games/addgame">add game</Link>
-                <Link to="/api/genres/addgenre">add genre</Link>
-                <Link to="/api/developers/adddev">add developer</Link>
+            <div className="absolute bg-indigo-700 z-50 w-full top-10 text-wrap rounded-b-md">
+              <ul className="flex flex-col justify-center items-start px-3 flex-nowrap  gap-3 py-3">
+                <Link to="/api/games/addgame" className="border-b-2">
+                  A Game
+                </Link>
+                <Link to="/api/genres/addgenre" className="border-b-2">
+                  A Genre
+                </Link>
+                <Link to="/api/developers/adddev" className="border-b-2">
+                  A Developer
+                </Link>
               </ul>
             </div>
           )}

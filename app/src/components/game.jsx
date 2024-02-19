@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 const Game = ({ title, image, url }) => {
   return (
-    <div className="w-52 ">
+    <div className="w-52 bg-indigo-600 rounded-lg font-semibold text-lg hover:scale-105 hover:bg-white hover:text-blue-500 transition duration-150 ease-out hover:ease-in">
       <Link to={url}>
         <div className="bg-white px-4 py-2 rounded-sm h-40">
           <div className="flex justify-center items-center ">
