@@ -1,6 +1,13 @@
 <h1>the odin project: Inventory app Project</h1>
 <p>built using mongoDb, express, node, React.js with vite, Tailwind.css , Eslint and prettier config</p>
 
+<h4>features: </h4>
+<ul>
+    <li>adding, deleting, updating genres, developers, games</li>
+    <li>Affecting a game to existing genre and developer</li>
+    <li>developers and genres with there associated games count</li>
+</ul>
+
 <h4>this project covers: </h4>
 <ul>
     <li>using mongoDb for storing form data,aggregation pipelines,db data validation, virtuals</li>
