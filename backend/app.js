@@ -15,7 +15,7 @@ app.use(express.json());
 app.use("/api", router);
 
 app.use("/", cors(), (req, res) => {
-  res.send("hello world");
+  res.status(200).json({ msg: "welcome" });
 });
 mongoose
   .connect(process.env.MONGO_URI)
