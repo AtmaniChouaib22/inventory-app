@@ -11,6 +11,7 @@ const {
   game_one,
   game_post,
   game_delete,
+  game_update,
 } = require("../controllers/gamesController");
 const {
   dev_post,
@@ -55,6 +56,8 @@ router.get("/games/:id", game_one);
 router.post("/games", upload.single("picture"), game_post);
 
 router.delete("/games/:id", game_delete);
+
+router.patch("/games/:id", upload.single("picture"), game_update);
 
 // dev routes
 
