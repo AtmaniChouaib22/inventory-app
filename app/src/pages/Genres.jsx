@@ -12,7 +12,7 @@ const Genres = () => {
     fetchGenres();
   }, []);
   return (
-    <div className="flex flex-col items-center pt-10 gap-5">
+    <div className="flex flex-col items-center pt-10 gap-5 pb-60">
       <h1 className="text-3xl font-bold text-indigo-600">All Genres List </h1>
       <ul className="flex flex-col gap-3 items-start">
         {genres.map((genre) => (

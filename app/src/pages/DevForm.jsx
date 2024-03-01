@@ -35,7 +35,7 @@ const DevForm = () => {
     }
   };
   return (
-    <div className="pt-10 flex justify-center items-center">
+    <div className="pt-10 flex justify-center items-center pb-40">
       {error && <div>adding failed {error}</div>}
       <form
         onSubmit={handleSubmit}
