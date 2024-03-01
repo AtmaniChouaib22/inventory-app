@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import UpdateForm from "../pages/UpdateForm";
+
 const FullGame = () => {
   const [game, setGame] = useState();
   const [deleted, setDeleted] = useState(false);
@@ -77,6 +79,7 @@ const FullGame = () => {
           </div>
         </div>
       )}
+      <UpdateForm />
     </div>
   );
 };
