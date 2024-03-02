@@ -1,4 +1,4 @@
-<h1>the odin project: Inventory app Project</h1>
+<h1>Inventory app Project</h1>
 <p>built using mongoDb, express, node, React.js with vite, Tailwind.css , Eslint and prettier config</p>
 
 <h4>features: </h4>
